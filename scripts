@@ -1,0 +1,182 @@
+/* =========================================================
+   CYBERSECURITY WEBSITE
+   DARK MODE JAVASCRIPT
+   =========================================================
+
+   This file controls the light and dark themes.
+
+   The JavaScript:
+   1. Finds the dark mode button.
+   2. Toggles the dark-mode class.
+   3. Saves the user's theme preference.
+   4. Restores the saved theme when the page loads.
+   5. Updates the button text.
+   6. Synchronizes the theme between browser tabs.
+
+   This uses vanilla JavaScript.
+   No external JavaScript libraries are required.
+   ========================================================= */
+
+
+/* =========================================================
+   FIND THE DARK MODE BUTTON
+   ========================================================= */
+
+/*
+   Finds the button with the ID "theme-toggle".
+*/
+const themeToggle = document.querySelector("#theme-toggle");
+
+
+/* =========================================================
+   UPDATE THE BUTTON TEXT
+   ========================================================= */
+
+/*
+   Changes the button text depending on the current theme.
+*/
+function updateThemeButton() {
+
+    /*
+       Check if the body currently has the dark-mode class.
+    */
+    if (document.body.classList.contains("dark-mode")) {
+
+        /*
+           If dark mode is active, give the user an option
+           to switch back to light mode.
+        */
+        themeToggle.textContent = "☀ Light Mode";
+
+    } else {
+
+        /*
+           If light mode is active, give the user an option
+           to switch to dark mode.
+        */
+        themeToggle.textContent = "☾ Dark Mode";
+
+    }
+
+}
+
+
+/* =========================================================
+   TOGGLE THE THEME
+   ========================================================= */
+
+/*
+   Runs whenever the user clicks the theme button.
+*/
+themeToggle.addEventListener("click", function () {
+
+    /*
+       Add or remove the dark-mode class from the body.
+    */
+    document.body.classList.toggle("dark-mode");
+
+
+    /*
+       Check whether dark mode is currently active.
+    */
+    if (document.body.classList.contains("dark-mode")) {
+
+        /*
+           Save the dark theme in localStorage.
+
+           localStorage allows the browser to remember the
+           user's theme after refreshing or reopening the page.
+        */
+        localStorage.setItem("website-theme", "dark");
+
+    } else {
+
+        /*
+           Save the light theme when dark mode is turned off.
+        */
+        localStorage.setItem("website-theme", "light");
+
+    }
+
+
+    /*
+       Update the button text.
+    */
+    updateThemeButton();
+
+});
+
+
+/* =========================================================
+   RESTORE THE SAVED THEME
+   ========================================================= */
+
+/*
+   Get the theme saved in localStorage.
+*/
+const savedTheme = localStorage.getItem("website-theme");
+
+
+/*
+   Check whether the saved theme is dark.
+*/
+if (savedTheme === "dark") {
+
+    /*
+       Apply dark mode to the webpage.
+    */
+    document.body.classList.add("dark-mode");
+
+}
+
+
+/* =========================================================
+   INITIAL BUTTON TEXT
+   ========================================================= */
+
+/*
+   Make sure the button displays the correct text when
+   the page first loads.
+*/
+updateThemeButton();
+
+
+/* =========================================================
+   SYNCHRONIZE MULTIPLE BROWSER TABS
+   ========================================================= */
+
+/*
+   If the user has the website open in more than one tab,
+   changing the theme in one tab will update the other tab.
+*/
+window.addEventListener("storage", function () {
+
+    /*
+       Get the newest saved theme.
+    */
+    const updatedTheme = localStorage.getItem("website-theme");
+
+
+    /*
+       Apply the saved dark theme if necessary.
+    */
+    if (updatedTheme === "dark") {
+
+        document.body.classList.add("dark-mode");
+
+    } else {
+
+        /*
+           Otherwise use the light theme.
+        */
+        document.body.classList.remove("dark-mode");
+
+    }
+
+
+    /*
+       Update the button text.
+    */
+    updateThemeButton();
+
+});
