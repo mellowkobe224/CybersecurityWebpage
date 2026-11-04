@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | BlueShield Cyber</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">BlueShield Cyber</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="careers.html">Careers</a>
+                <a href="skills.html">Skills</a>
+                <a href="about.html">About</a>
+                <a href="register.html">Sign Up</a>
+            </div>
+
+            <button id="theme_toggler" type="button">Dark Mode</button>
+        </nav>
+    </header>
+
+    <main class="auth-page">
+        <section class="auth-container">
+
+            <h1>Welcome Back</h1>
+
+            <p class="auth-description">
+                Log in to your BlueShield Cyber account.
+            </p>
+
+            <!-- Login form sends credentials to the server -->
+            <form action="/login" method="POST" class="auth-form">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username"
+                           placeholder="Enter your username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="auth-button">
+                    Log In
+                </button>
+
+            </form>
+
+            <p class="auth-switch">
+                Don't have an account?
+                <a href="register.html">Create an account</a>
+            </p>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 BlueShield Cyber. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

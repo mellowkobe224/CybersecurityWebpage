@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | BlueShield Cyber</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">BlueShield Cyber</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="careers.html">Careers</a>
+                <a href="skills.html">Skills</a>
+                <a href="about.html">About</a>
+                <a href="login.html">Login</a>
+            </div>
+
+            <button id="theme_toggler" type="button">Dark Mode</button>
+        </nav>
+    </header>
+
+    <main class="auth-page">
+        <section class="auth-container">
+
+            <h1>Create Your Account</h1>
+
+            <p class="auth-description">
+                Join BlueShield Cyber to explore cybersecurity
+                careers, skills, and resources.
+            </p>
+
+            <!-- Registration form sends user information to server.js -->
+            <form action="/signup" method="POST" class="auth-form">
+
+                <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="fname"
+                           placeholder="Enter your first name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lname"
+                           placeholder="Enter your last name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userName">Username</label>
+                    <input type="text" id="userName" name="userName"
+                           placeholder="Create a username"
+                           minlength="3" maxlength="50" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="Create a password"
+                           minlength="8" required>
+                </div>
+
+                <button type="submit" class="auth-button">
+                    Sign Up
+                </button>
+
+            </form>
+
+            <p class="auth-switch">
+                Already have an account?
+                <a href="login.html">Log in here</a>
+            </p>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 BlueShield Cyber. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
