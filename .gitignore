@@ -1,0 +1,19 @@
+# Do not upload installed Node.js packages
+node_modules/
+
+# Keep database passwords and session secrets private
+.env
+.env.*
+
+# Allow an example environment file if needed
+!.env.example
+
+# Ignore npm debug logs
+npm-debug.log*
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore VS Code workspace settings
+.vscode/
