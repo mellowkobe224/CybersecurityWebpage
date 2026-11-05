@@ -1,0 +1,75 @@
+/*
+    BlueShield Cyber Website
+    Light and dark theme controller.
+
+    This file uses vanilla JavaScript.
+    No external JavaScript libraries are required.
+
+    The selected theme is saved in localStorage so the
+    preference remains when visitors navigate between pages
+    or reload the website.
+*/
+
+// Find the theme button on the current page.
+const themeButton = document.querySelector("#theme_toggler");
+
+// Read the saved theme and apply it when the page opens.
+function retrieveTheme() {
+    // Get the saved preference from the browser.
+    const savedTheme = localStorage.getItem("website_theme");
+
+    // Enable dark mode if it was previously selected.
+    if (savedTheme === "dark_mode") {
+        document.body.classList.add("dark_mode");
+    } else {
+        // Use the light theme when no dark preference is saved.
+        document.body.classList.remove("dark_mode");
+    }
+
+    // Update the button to match the current theme.
+    updateThemeButton();
+}
+
+// Change the button label and accessibility information.
+function updateThemeButton() {
+    // Check whether dark mode is active.
+    const isDarkMode = document.body.classList.contains("dark_mode");
+
+    if (isDarkMode) {
+        // In dark mode, offer to switch back to light mode.
+        themeButton.textContent = "☀ Switch to Light Mode";
+        themeButton.setAttribute("aria-label", "Switch to light mode");
+        themeButton.setAttribute("aria-pressed", "true");
+    } else {
+        // In light mode, offer to switch to dark mode.
+        themeButton.textContent = "🌙 Switch to Dark Mode";
+        themeButton.setAttribute("aria-label", "Switch to dark mode");
+        themeButton.setAttribute("aria-pressed", "false");
+    }
+}
+
+// Switch themes when the visitor clicks the button.
+themeButton.addEventListener("click", function () {
+    // Add or remove the dark_mode class from the page.
+    document.body.classList.toggle("dark_mode");
+
+    // Save the selected theme in the browser.
+    if (document.body.classList.contains("dark_mode")) {
+        localStorage.setItem("website_theme", "dark_mode");
+    } else {
+        localStorage.setItem("website_theme", "light_mode");
+    }
+
+    // Refresh the button label.
+    updateThemeButton();
+});
+
+// Apply the previously saved theme.
+retrieveTheme();
+
+// Synchronize the theme if another tab changes the saved preference.
+window.addEventListener("storage", function (event) {
+    if (event.key === "website_theme") {
+        retrieveTheme();
+    }
+});
